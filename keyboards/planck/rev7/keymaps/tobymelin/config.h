@@ -49,4 +49,23 @@
 #define ENCODER_RESOLUTION 4
 
 // PERSONAL CONFIGURATION SETTINGS BELOW THIS COMMENT
+#define PERMISSIVE_HOLD
 #define PERMISSIVE_HOLD_PER_KEY
+
+#define HOLD_ON_OTHER_KEY_PRESS
+#define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
+
+// Sensible Acceleration defaults (default MOUSEKEY mode)
+/* #define MOUSEKEY_INTERVAL 16 */
+/* #define MOUSEKEY_MAX_SPEED 2 */
+
+// Sensible Kinetic defaults
+/* #define MK_KINETIC_SPEED */
+/* #define MOUSEKEY_BASE_SPEED 900 */
+
+// Mousekey Inertia mode
+#define MOUSEKEY_INERTIA
+#define MOUSEKEY_DELAY 20
+#define MOUSEKEY_MAX_SPEED 18
+#define MOUSEKEY_TIME_TO_MAX 26
+#define MOUSEKEY_FRICTION 16

@@ -20,9 +20,10 @@ enum planck_layers { _QWERTY, _LOWER, _RAISE, _NUMS, _ADJUST };
 
 enum planck_keycodes { QWERTY = SAFE_RANGE, BACKLIT, EXT_PLV };
 
+#define ADJUST MO(_ADJUST)
 #define LOWER MO(_LOWER)
-#define RAISE MO(_RAISE)
 #define NUMS MO(_NUMS)
+#define RAISE MO(_RAISE)
 
 enum unicode_names {
     AA,
@@ -31,9 +32,9 @@ enum unicode_names {
 };
 
 const uint32_t unicode_map[] PROGMEM = {
-    [AA]  = 0x00C5,
-    [AE] = 0x00C4,
-    [OE]  = 0x00D6,
+    [AA]  = 0x00C5,  // ‽
+    [AE] = 0x00C4,  // ⸮
+    [OE]  = 0x00D6, // 🐍
 };
 
 /* clang-format off */
@@ -54,51 +55,51 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_LCTL        , KC_RGUI , KC_LALT , KC_LGUI , LOWER , KC_RSFT ,     LT(_NUMS, KC_SPC) , RAISE , KC_LEFT , KC_DOWN , KC_UP   , KC_RGHT
 ),
 
-//        ┌─────┬─────┬─────┬─────┬─────┬─────┐   ┌─────┬──────────┬─────────┬──────┬──────┬──────┐
-//        │  ~  │  !  │  @  │  #  │  $  │  %  │   │  ^  │    &     │    *    │  (   │  )   │ bspc │
-//        ├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼──────────┼─────────┼──────┼──────┼──────┤
-//        │ del │ f1  │ f2  │ f3  │ f4  │ f5  │   │ f6  │    _     │    +    │  {   │  }   │  |   │
-//        ├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼──────────┼─────────┼──────┼──────┼──────┤
-//        │     │ f7  │ f8  │ f9  │ f10 │ f11 │   │ f12 │ S(iso--) │ S(iso\) │ home │ end  │      │
-//        ├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼──────────┼─────────┼──────┼──────┼──────┤
-//        │     │     │     │     │     │     │   │     │          │  mnxt   │ vold │ volu │ mply │
-//        └─────┴─────┴─────┴─────┴─────┴─────┘   └─────┴──────────┴─────────┴──────┴──────┴──────┘
+//        ┌─────┬───────┬─────┬─────┬─────┬─────┐   ┌──────┬──────┬──────┬──────┬──────┬──────┐
+//        │  ~  │  f1   │ f2  │ f3  │ f4  │     │   │      │ btn1 │ ms_u │ btn2 │ wh_u │      │
+//        ├─────┼───────┼─────┼─────┼─────┼─────┤   ├──────┼──────┼──────┼──────┼──────┼──────┤
+//        │ del │  f5   │ f6  │ f7  │ f8  │     │   │ btn3 │ ms_l │ ms_d │ ms_r │ wh_d │  |   │
+//        ├─────┼───────┼─────┼─────┼─────┼─────┤   ├──────┼──────┼──────┼──────┼──────┼──────┤
+//        │     │  f9   │ f10 │ f11 │ f12 │     │   │      │ wh_d │ wh_u │ home │ end  │      │
+//        ├─────┼───────┼─────┼─────┼─────┼─────┤   ├──────┼──────┼──────┼──────┼──────┼──────┤
+//        │     │ RAISE │     │     │     │     │   │      │ btn1 │ btn2 │ vold │ volu │ mply │
+//        └─────┴───────┴─────┴─────┴─────┴─────┘   └──────┴──────┴──────┴──────┴──────┴──────┘
 [_LOWER] = LAYOUT_planck_grid(
-      KC_TILD , KC_EXLM , KC_AT   , KC_HASH , KC_DLR  , KC_PERC ,     KC_CIRC , KC_AMPR    , KC_ASTR    , KC_LPRN , KC_RPRN , KC_BSPC,
-      KC_DEL  , KC_F1   , KC_F2   , KC_F3   , KC_F4   , KC_F5   ,     KC_F6   , KC_UNDS    , KC_PLUS    , KC_LCBR , KC_RCBR , KC_PIPE,
-      _______ , KC_F7   , KC_F8   , KC_F9   , KC_F10  , KC_F11  ,     KC_F12  , S(KC_NUHS) , S(KC_NUBS) , KC_HOME , KC_END  , _______,
-      _______ , _______ , _______ , _______ , _______ , _______ ,     _______ , _______    , KC_MNXT    , KC_VOLD , KC_VOLU , KC_MPLY
+      KC_TILD , KC_F1 , KC_F2   , KC_F3   , KC_F4   , _______ ,     _______    , KC_MS_BTN1    , KC_MS_UP    , KC_MS_BTN2  , KC_MS_WH_UP   , _______,
+      KC_DEL  , KC_F5 , KC_F6   , KC_F7   , KC_F8   , _______ ,     KC_MS_BTN3 , KC_MS_LEFT    , KC_MS_DOWN  , KC_MS_RIGHT , KC_MS_WH_DOWN , KC_PIPE,
+      _______ , KC_F9 , KC_F10  , KC_F11  , KC_F12  , _______ ,     _______    , KC_MS_WH_DOWN , KC_MS_WH_UP , KC_HOME     , KC_END        , _______,
+      _______ , RAISE , _______ , _______ , _______ , _______ ,     _______    , KC_MS_BTN1    , KC_MS_BTN2  , KC_VOLD     , KC_VOLU       , KC_MPLY
 ),
 
 //        ┌─────┬─────┬─────┬─────┬─────┬─────┐   ┌─────┬─────┬───┬───┬───┬──────┐
 //        │  `  │  1  │  2  │  3  │  4  │  5  │   │  6  │  7  │ 8 │ 9 │ 0 │ bspc │
 //        ├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼───┼───┼───┼──────┤
-//        │ del │  !  │  @  │  #  │  $  │  %  │   │  ^  │  -  │ = │ [ │ ] │  \   │
+//        │ del │  (  │  )  │  +  │  =  │  {  │   │  }  │  -  │ [ │ ] │ _ │  \   │
 //        ├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼───┼───┼───┼──────┤
-//        │     │ f7  │ f8  │ f9  │ f10 │ f11 │   │ f12 │  &  │ * │ ( │ ) │      │
+//        │     │  !  │  @  │  #  │  $  │  %  │   │  ^  │  &  │ * │ ( │ ) │      │
 //        ├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼───┼───┼───┼──────┤
 //        │     │     │     │     │     │     │   │     │     │ { │ } │ ( │  )   │
 //        └─────┴─────┴─────┴─────┴─────┴─────┘   └─────┴─────┴───┴───┴───┴──────┘
 [_RAISE] = LAYOUT_planck_grid(
       KC_GRV  , KC_1    , KC_2    , KC_3    , KC_4    , KC_5    ,     KC_6    , KC_7    , KC_8    , KC_9    , KC_0    , KC_BSPC,
-      KC_DEL  , KC_EXLM , KC_AT   , KC_HASH , KC_DLR  , KC_PERC ,     KC_CIRC , KC_MINS , KC_EQL  , KC_LBRC , KC_RBRC , KC_BSLS,
-      _______ , KC_F7   , KC_F8   , KC_F9   , KC_F10  , KC_F11  ,     KC_F12  , KC_AMPR , KC_ASTR , KC_LPRN , KC_RPRN , _______,
+      KC_DEL  , KC_LPRN , KC_RPRN , KC_PLUS , KC_EQL  , KC_LCBR ,     KC_RCBR , KC_MINS , KC_LBRC , KC_RBRC , KC_UNDS , KC_BSLS,
+      _______ , KC_EXLM , KC_AT   , KC_HASH , KC_DLR  , KC_PERC ,     KC_CIRC , KC_AMPR , KC_ASTR , KC_LPRN , KC_RPRN , _______,
       _______ , _______ , _______ , _______ , _______ , _______ ,     _______ , _______ , KC_LCBR , KC_RCBR , KC_LPRN , KC_RPRN
 ),
 
 //        ┌─────┬─────┬─────┬─────┬─────┬─────┐   ┌──────┬──────┬─────┬──────┬───────┬───────┐
-//        │  `  │     │  7  │  8  │  9  │  .  │   │      │  [   │  ]  │  =   │ X(AA) │ bspc  │
+//        │  `  │     │  7  │  8  │  9  │  .  │   │      │  [   │  ]  │  =   │   [   │ bspc  │
 //        ├─────┼─────┼─────┼─────┼─────┼─────┤   ├──────┼──────┼─────┼──────┼───────┼───────┤
 //        │     │     │  4  │  5  │  6  │  0  │   │ left │ down │ up  │ rght │ X(AE) │ X(OE) │
 //        ├─────┼─────┼─────┼─────┼─────┼─────┤   ├──────┼──────┼─────┼──────┼───────┼───────┤
-//        │     │     │  1  │  2  │  3  │     │   │      │  {   │  }  │      │       │       │
+//        │     │     │  1  │  2  │  3  │  -  │   │      │  {   │  }  │      │       │       │
 //        ├─────┼─────┼─────┼─────┼─────┼─────┤   ├──────┼──────┼─────┼──────┼───────┼───────┤
 //        │     │     │     │     │     │     │   │      │      │     │      │       │       │
 //        └─────┴─────┴─────┴─────┴─────┴─────┘   └──────┴──────┴─────┴──────┴───────┴───────┘
 [_NUMS] = LAYOUT_planck_grid(
-      KC_GRV  , _______ , KC_7    , KC_8    , KC_9    , KC_DOT  ,     _______ , KC_LBRC , KC_RBRC , KC_EQL  , X(AA)   , KC_BSPC,
+      KC_GRV  , _______ , KC_7    , KC_8    , KC_9    , KC_DOT  ,     _______ , KC_LBRC , KC_RBRC , KC_EQL  , KC_LBRC , KC_BSPC,
       _______ , _______ , KC_4    , KC_5    , KC_6    , KC_0    ,     KC_LEFT , KC_DOWN , KC_UP   , KC_RGHT , X(AE)   , X(OE)  ,
-      _______ , _______ , KC_1    , KC_2    , KC_3    , _______ ,     _______ , KC_LCBR , KC_RCBR , _______ , _______ , _______,
+      _______ , _______ , KC_1    , KC_2    , KC_3    , KC_MINS ,     _______ , KC_LCBR , KC_RCBR , _______ , _______ , _______,
       _______ , _______ , _______ , _______ , _______ , _______ ,     _______ , _______ , _______ , _______ , _______ , _______
 ),
 
@@ -249,10 +250,22 @@ bool dip_switch_update_user(uint8_t index, bool active) {
 bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case LCTL_T(KC_ESC):
+        case LT(_NUMS, KC_SPC):
             // Immediately select the hold action when another key is tapped.
             return true;
         default:
             // Do not select the hold action when another key is tapped.
+            return false;
+    }
+}
+
+bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case LCTL_T(KC_ESC):
+            // Immediately select the hold action when another key is pressed.
+            return true;
+        default:
+            // Do not select the hold action when another key is pressed.
             return false;
     }
 }
