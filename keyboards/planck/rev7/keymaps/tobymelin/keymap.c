@@ -32,9 +32,9 @@ enum unicode_names {
 };
 
 const uint32_t unicode_map[] PROGMEM = {
-    [AA]  = 0x00C5,  // ‽
-    [AE] = 0x00C4,  // ⸮
-    [OE]  = 0x00D6, // 🐍
+    [AA]  = 0x00C5,
+    [AE] = 0x00C4,
+    [OE]  = 0x00D6,
 };
 
 /* clang-format off */
