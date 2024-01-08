@@ -37,8 +37,8 @@ const uint32_t unicode_map[] PROGMEM = {
     [OE]  = 0x00D6,
 };
 
-const uint16_t PROGMEM left_bracket_combo[] = {KC_J, KC_K, COMBO_END};
-const uint16_t PROGMEM right_bracket_combo[] = {KC_K, KC_L, COMBO_END};
+const uint16_t PROGMEM left_bracket_combo[] = {KC_U, KC_I, COMBO_END};
+const uint16_t PROGMEM right_bracket_combo[] = {KC_I, KC_O, COMBO_END};
 const uint16_t PROGMEM left_paren_combo[] = {KC_M, KC_COMM, COMBO_END};
 const uint16_t PROGMEM right_paren_combo[] = {KC_COMM, KC_DOT, COMBO_END};
 
@@ -51,20 +51,20 @@ combo_t key_combos[] = {
 
 /* clang-format off */
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-//        ┌─────────────┬───────┬──────┬──────┬───────────┬─────┐   ┌──────┬───────┬──────┬──────┬────┬──────┐
-//        │     tab     │   q   │  w   │  e   │     r     │  t  │   │  y   │   u   │  i   │  o   │ p  │ bspc │
-//        ├─────────────┼───────┼──────┼──────┼───────────┼─────┤   ├──────┼───────┼──────┼──────┼────┼──────┤
-//        │ LCTL_T(esc) │   a   │  s   │  d   │     f     │  g  │   │  h   │   j   │  k   │  l   │ ;  │  '   │
-//        ├─────────────┼───────┼──────┼──────┼───────────┼─────┤   ├──────┼───────┼──────┼──────┼────┼──────┤
-//        │    lsft     │   z   │  x   │  c   │     v     │  b  │   │  n   │   m   │  ,   │  .   │ /  │ ent  │
-//        ├─────────────┼───────┼──────┼──────┼───────────┼─────┤   ├──────┼───────┼──────┼──────┼────┼──────┤
-//        │    lctl     │ LOWER │ lalt │ lgui │ TT(_NUMS) │ spc │   │ rgui │ RAISE │ left │ down │ up │ rght │
-//        └─────────────┴───────┴──────┴──────┴───────────┴─────┘   └──────┴───────┴──────┴──────┴────┴──────┘
+//        ┌─────────────┬───────────┬───────────┬───────────┬───────────┬─────┐   ┌──────┬───────────┬───────────┬───────────┬───────────┬──────┐
+//        │     tab     │     q     │     w     │     e     │     r     │  t  │   │  y   │     u     │     i     │     o     │     p     │ bspc │
+//        ├─────────────┼───────────┼───────────┼───────────┼───────────┼─────┤   ├──────┼───────────┼───────────┼───────────┼───────────┼──────┤
+//        │ LCTL_T(esc) │ LCTL_T(a) │ LALT_T(s) │ LGUI_T(d) │ LSFT_T(f) │  g  │   │  h   │ RSFT_T(j) │ LGUI_T(k) │ RALT_T(l) │ RCTL_T(;) │  '   │
+//        ├─────────────┼───────────┼───────────┼───────────┼───────────┼─────┤   ├──────┼───────────┼───────────┼───────────┼───────────┼──────┤
+//        │    lsft     │     z     │     x     │     c     │     v     │  b  │   │  n   │     m     │     ,     │     .     │     /     │ ent  │
+//        ├─────────────┼───────────┼───────────┼───────────┼───────────┼─────┤   ├──────┼───────────┼───────────┼───────────┼───────────┼──────┤
+//        │    lctl     │   LOWER   │   lalt    │   lgui    │ TT(_NUMS) │ spc │   │ rgui │   RAISE   │   left    │   down    │    up     │ rght │
+//        └─────────────┴───────────┴───────────┴───────────┴───────────┴─────┘   └──────┴───────────┴───────────┴───────────┴───────────┴──────┘
 [_QWERTY] = LAYOUT_planck_grid(
-      KC_TAB         , KC_Q  , KC_W    , KC_E    , KC_R      , KC_T   ,     KC_Y    , KC_U  , KC_I    , KC_O    , KC_P    , KC_BSPC,
-      LCTL_T(KC_ESC) , KC_A  , KC_S    , KC_D    , KC_F      , KC_G   ,     KC_H    , KC_J  , KC_K    , KC_L    , KC_SCLN , KC_QUOT,
-      KC_LSFT        , KC_Z  , KC_X    , KC_C    , KC_V      , KC_B   ,     KC_N    , KC_M  , KC_COMM , KC_DOT  , KC_SLSH , KC_ENT ,
-      KC_LCTL        , LOWER , KC_LALT , KC_LGUI , TT(_NUMS) , KC_SPC ,     KC_RGUI , RAISE , KC_LEFT , KC_DOWN , KC_UP   , KC_RGHT
+      KC_TAB         , KC_Q         , KC_W         , KC_E         , KC_R         , KC_T   ,     KC_Y    , KC_U         , KC_I         , KC_O         , KC_P            , KC_BSPC,
+      LCTL_T(KC_ESC) , LCTL_T(KC_A) , LALT_T(KC_S) , LGUI_T(KC_D) , LSFT_T(KC_F) , KC_G   ,     KC_H    , RSFT_T(KC_J) , LGUI_T(KC_K) , RALT_T(KC_L) , RCTL_T(KC_SCLN) , KC_QUOT,
+      KC_LSFT        , KC_Z         , KC_X         , KC_C         , KC_V         , KC_B   ,     KC_N    , KC_M         , KC_COMM      , KC_DOT       , KC_SLSH         , KC_ENT ,
+      KC_LCTL        , LOWER        , KC_LALT      , KC_LGUI      , TT(_NUMS)    , KC_SPC ,     KC_RGUI , RAISE        , KC_LEFT      , KC_DOWN      , KC_UP           , KC_RGHT
 ),
 
 //        ┌─────┬─────┬─────┬─────┬───────┬─────┐   ┌──────┬──────┬──────┬──────┬──────┬──────┐
@@ -99,18 +99,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______ , _______ , _______ , _______ , _______ , _______ ,     _______ , _______ , KC_LCBR , KC_RCBR , KC_LPRN , KC_RPRN
 ),
 
-//        ┌─────┬─────┬─────┬─────┬─────┬─────┐   ┌──────┬──────┬─────┬──────┬───────┬───────┐
-//        │  `  │     │  7  │  8  │  9  │  -  │   │      │  [   │  ]  │  =   │   [   │ bspc  │
-//        ├─────┼─────┼─────┼─────┼─────┼─────┤   ├──────┼──────┼─────┼──────┼───────┼───────┤
-//        │     │     │  4  │  5  │  6  │  0  │   │ left │ down │ up  │ rght │ X(AE) │ X(OE) │
-//        ├─────┼─────┼─────┼─────┼─────┼─────┤   ├──────┼──────┼─────┼──────┼───────┼───────┤
-//        │     │     │  1  │  2  │  3  │  .  │   │      │  {   │  }  │      │       │       │
-//        ├─────┼─────┼─────┼─────┼─────┼─────┤   ├──────┼──────┼─────┼──────┼───────┼───────┤
-//        │     │     │     │     │     │     │   │      │      │     │      │       │       │
-//        └─────┴─────┴─────┴─────┴─────┴─────┘   └──────┴──────┴─────┴──────┴───────┴───────┘
+//        ┌─────┬─────┬─────┬─────┬─────┬─────┐   ┌──────┬──────┬─────┬──────┬───────┬──────┐
+//        │  ~  │     │  7  │  8  │  9  │  -  │   │      │  [   │  ]  │  =   │   [   │ bspc │
+//        ├─────┼─────┼─────┼─────┼─────┼─────┤   ├──────┼──────┼─────┼──────┼───────┼──────┤
+//        │     │     │  4  │  5  │  6  │  0  │   │ left │ down │ up  │ rght │ X(AE) │  |   │
+//        ├─────┼─────┼─────┼─────┼─────┼─────┤   ├──────┼──────┼─────┼──────┼───────┼──────┤
+//        │     │     │  1  │  2  │  3  │  .  │   │      │  {   │  }  │      │       │      │
+//        ├─────┼─────┼─────┼─────┼─────┼─────┤   ├──────┼──────┼─────┼──────┼───────┼──────┤
+//        │     │     │     │     │     │     │   │      │      │     │      │       │      │
+//        └─────┴─────┴─────┴─────┴─────┴─────┘   └──────┴──────┴─────┴──────┴───────┴──────┘
 [_NUMS] = LAYOUT_planck_grid(
-      KC_GRV  , _______ , KC_7    , KC_8    , KC_9    , KC_MINS ,     _______ , KC_LBRC , KC_RBRC , KC_EQL  , KC_LBRC , KC_BSPC,
-      _______ , _______ , KC_4    , KC_5    , KC_6    , KC_0    ,     KC_LEFT , KC_DOWN , KC_UP   , KC_RGHT , X(AE)   , X(OE)  ,
+      KC_TILD , _______ , KC_7    , KC_8    , KC_9    , KC_MINS ,     _______ , KC_LBRC , KC_RBRC , KC_EQL  , KC_LBRC , KC_BSPC,
+      _______ , _______ , KC_4    , KC_5    , KC_6    , KC_0    ,     KC_LEFT , KC_DOWN , KC_UP   , KC_RGHT , X(AE)   , KC_PIPE,
       _______ , _______ , KC_1    , KC_2    , KC_3    , KC_DOT  ,     _______ , KC_LCBR , KC_RCBR , _______ , _______ , _______,
       _______ , _______ , _______ , _______ , _______ , _______ ,     _______ , _______ , _______ , _______ , _______ , _______
 ),
